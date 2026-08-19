@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevSystem PRIME — Sistemas de Gestão</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1E3A5F;
+      --blue: #2E86DE;
+      --blue-light: #E8F2FB;
+      --green: #27AE60;
+      --orange: #E67E22;
+      --text: #1A202C;
+      --muted: #4A5568;
+      --border: #E2E8F0;
+      --bg: #F7F8FA;
+      --white: #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-weight: 800; font-size: 1.15rem; color: var(--navy);
+      letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--blue); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: .9rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cta {
+      background: var(--blue); color: #fff; border: none; cursor: pointer;
+      padding: .5rem 1.25rem; border-radius: 8px; font-size: .875rem;
+      font-weight: 600; font-family: inherit; text-decoration: none;
+      transition: background .2s, transform .1s;
+    }
+    .nav-cta:hover { background: #1a6bbf; transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 8rem 2rem 5rem;
+      text-align: center;
+      background: linear-gradient(160deg, #fff 60%, var(--blue-light) 100%);
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      background: var(--blue-light); color: var(--blue);
+      font-size: .78rem; font-weight: 700; letter-spacing: 1.2px;
+      text-transform: uppercase; padding: .35rem .9rem; border-radius: 99px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 800; color: var(--navy);
+      line-height: 1.15; letter-spacing: -1.5px;
+      max-width: 700px; margin: 0 auto 1.25rem;
+    }
+    .hero h1 em { font-style: normal; color: var(--blue); }
+    .hero p {
+      font-size: 1.1rem; color: var(--muted); max-width: 520px;
+      margin: 0 auto 2.5rem; line-height: 1.7; font-weight: 400;
+    }
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--blue); color: #fff; padding: .85rem 2rem;
+      border-radius: 10px; font-weight: 700; font-size: 1rem;
+      text-decoration: none; transition: all .2s; display: inline-flex; align-items: center; gap: .5rem;
+    }
+    .btn-primary:hover { background: #1a6bbf; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(46,134,222,.3); }
+    .btn-secondary {
+      background: transparent; color: var(--navy); padding: .85rem 2rem;
+      border-radius: 10px; font-weight: 600; font-size: 1rem;
+      text-decoration: none; border: 2px solid var(--border); transition: all .2s;
+      display: inline-flex; align-items: center; gap: .5rem;
+    }
+    .btn-secondary:hover { border-color: var(--blue); color: var(--blue); }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--navy);
+      padding: 2rem;
+      display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap;
+    }
+    .stat { text-align: center; color: #fff; }
+    .stat strong { display: block; font-size: 1.8rem; font-weight: 800; color: #fff; }
+    .stat span { font-size: .82rem; color: rgba(255,255,255,.6); font-weight: 500; text-transform: uppercase; letter-spacing: .8px; }
+
+    /* ── SISTEMAS ── */
+    .sistemas {
+      padding: 5rem 2rem;
+      background: var(--bg);
+    }
+    .section-label {
+      text-align: center; font-size: .78rem; font-weight: 700;
+      color: var(--blue); letter-spacing: 1.5px; text-transform: uppercase;
+      margin-bottom: .75rem;
+    }
+    .section-title {
+      text-align: center; font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800; color: var(--navy); letter-spacing: -1px;
+      margin-bottom: .75rem;
+    }
+    .section-sub {
+      text-align: center; color: var(--muted); font-size: 1rem;
+      max-width: 480px; margin: 0 auto 3rem; line-height: 1.6;
+    }
+    .sistemas-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem; max-width: 1000px; margin: 0 auto;
+    }
+    .sistema-card {
+      background: var(--white); border-radius: 20px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,.06);
+      transition: transform .3s, box-shadow .3s;
+    }
+    .sistema-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,.1); }
+    .card-header {
+      padding: 2rem 2rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .card-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 1rem;
+    }
+    .card-icon.blue { background: var(--blue-light); }
+    .card-icon.orange { background: #FEF3E2; }
+    .card-name { font-size: 1.4rem; font-weight: 800; color: var(--navy); letter-spacing: -.5px; }
+    .card-type { font-size: .82rem; color: var(--muted); font-weight: 500; margin-top: .2rem; }
+
+    /* mini dashboard preview */
+    .dashboard-preview {
+      padding: 1.25rem 1.5rem;
+      background: #F0F4F8;
+      border-bottom: 1px solid var(--border);
+    }
+    .dp-bar { display: flex; gap: .5rem; align-items: flex-end; height: 48px; }
+    .dp-col {
+      flex: 1; border-radius: 4px 4px 0 0;
+      animation: grow 1.2s ease-out forwards;
+      transform-origin: bottom;
+    }
+    @keyframes grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+    .dp-stats { display: flex; gap: .75rem; margin-top: .75rem; }
+    .dp-stat {
+      flex: 1; background: #fff; border-radius: 8px; padding: .5rem .75rem;
+      font-size: .72rem;
+    }
+    .dp-stat strong { display: block; font-size: .9rem; font-weight: 700; }
+
+    .card-features { padding: 1.5rem 2rem 2rem; }
+    .feature-item {
+      display: flex; gap: .75rem; align-items: flex-start;
+      padding: .55rem 0; border-bottom: 1px solid var(--border);
+      font-size: .88rem; color: var(--muted);
+    }
+    .feature-item:last-child { border-bottom: none; }
+    .feature-check { color: var(--blue); font-size: .85rem; margin-top: 1px; flex-shrink: 0; }
+    .feature-check.green { color: var(--green); }
+    .card-cta {
+      display: block; margin: 1.25rem 2rem 2rem;
+      text-align: center; padding: .8rem;
+      border-radius: 10px; font-weight: 700; font-size: .9rem;
+      text-decoration: none; transition: all .2s;
+    }
+    .card-cta.blue { background: var(--blue); color: #fff; }
+    .card-cta.blue:hover { background: #1a6bbf; }
+    .card-cta.orange { background: var(--orange); color: #fff; }
+    .card-cta.orange:hover { background: #d35400; }
+
+    /* ── FEATURES ── */
+    .features { padding: 5rem 2rem; background: var(--white); }
+    .features-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem; max-width: 1000px; margin: 0 auto;
+    }
+    .feat {
+      padding: 1.75rem; border-radius: 16px; border: 1px solid var(--border);
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .feat:hover { border-color: var(--blue); box-shadow: 0 4px 20px rgba(46,134,222,.08); }
+    .feat-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: var(--blue-light); color: var(--blue);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.15rem; margin-bottom: 1rem;
+    }
+    .feat h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: .4rem; }
+    .feat p { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── CONTATO ── */
+    .contato {
+      padding: 5rem 2rem;
+      background: var(--navy);
+      text-align: center;
+    }
+    .contato h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; color: #fff; letter-spacing: -1px; margin-bottom: .75rem; }
+    .contato p { color: rgba(255,255,255,.65); font-size: 1rem; margin-bottom: 2.5rem; line-height: 1.6; }
+    .contato-cards { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+    .contato-card {
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+      border-radius: 16px; padding: 1.5rem 2rem;
+      text-decoration: none; color: #fff;
+      transition: background .2s, transform .2s;
+      display: flex; align-items: center; gap: 1rem;
+      min-width: 240px;
+    }
+    .contato-card:hover { background: rgba(255,255,255,.14); transform: translateY(-3px); }
+    .contato-icon { font-size: 1.75rem; }
+    .contato-info { text-align: left; }
+    .contato-info small { display: block; font-size: .72rem; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: .8px; margin-bottom: .2rem; }
+    .contato-info strong { font-size: .95rem; font-weight: 600; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111827; padding: 1.5rem 2rem;
+      text-align: center; font-size: .8rem; color: rgba(255,255,255,.35);
+    }
+    footer strong { color: rgba(255,255,255,.6); }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .stats-bar { gap: 2rem; }
+      .sistemas-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Dev<span>System</span> PRIME</div>
+  <ul class="nav-links">
+    <li><a href="#sistemas">Sistemas</a></li>
+    <li><a href="#recursos">Recursos</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <a href="#contato" class="nav-cta">Falar conosco</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Sistemas de Gestão Profissional</div>
+  <h1>Tecnologia que <em>simplifica</em> o seu negócio</h1>
+  <p>Sistemas completos, rápidos e fáceis de usar. Feitos para quem quer controle real do negócio sem complicação.</p>
+  <div class="hero-actions">
+    <a href="#sistemas" class="btn-primary">Ver nossos sistemas →</a>
+    <a href="#contato" class="btn-secondary">💬 Falar pelo WhatsApp</a>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat"><strong>2</strong><span>Sistemas disponíveis</span></div>
+  <div class="stat"><strong>100%</strong><span>Web — acesse de qualquer lugar</span></div>
+  <div class="stat"><strong>24h</strong><span>Suporte dedicado</span></div>
+  <div class="stat"><strong>R$0</strong><span>Taxa de implantação</span></div>
+</div>
+
+<!-- SISTEMAS -->
+<section class="sistemas" id="sistemas">
+  <div class="section-label">Nossos Produtos</div>
+  <h2 class="section-title">Escolha o sistema certo para você</h2>
+  <p class="section-sub">Cada sistema foi desenvolvido pensando nas necessidades reais do segmento.</p>
+
+  <div class="sistemas-grid">
+
+    <!-- MecPRIME -->
+    <div class="sistema-card">
+      <div class="card-header">
+        <div class="card-icon blue">🔧</div>
+        <div class="card-name">MecPRIME</div>
+        <div class="card-type">Sistema para Oficinas Mecânicas</div>
+      </div>
+      <div class="dashboard-preview">
+        <div class="dp-bar">
+          <div class="dp-col" style="height:60%;background:#2E86DE;animation-delay:.1s"></div>
+          <div class="dp-col" style="height:85%;background:#2E86DE;animation-delay:.2s"></div>
+          <div class="dp-col" style="height:45%;background:#2E86DE;animation-delay:.3s"></div>
+          <div class="dp-col" style="height:95%;background:#2E86DE;animation-delay:.4s"></div>
+          <div class="dp-col" style="height:70%;background:#2E86DE;animation-delay:.5s"></div>
+          <div class="dp-col" style="height:55%;background:#2E86DE;animation-delay:.6s"></div>
+          <div class="dp-col" style="height:80%;background:#2E86DE;animation-delay:.7s"></div>
+        </div>
+        <div class="dp-stats">
+          <div class="dp-stat" style="color:#2E86DE"><strong>12</strong>OS abertas</div>
+          <div class="dp-stat" style="color:#27AE60"><strong>R$8.4k</strong>Mês atual</div>
+          <div class="dp-stat" style="color:#E67E22"><strong>3</strong>Pendentes</div>
+        </div>
+      </div>
+      <div class="card-features">
+        <div style="font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;padding:.5rem 0 .25rem">Painel Administrativo</div>
+        <div class="feature-item"><span class="feature-check">✔</span> Dashboard com indicadores em tempo real</div>
+        <div class="feature-item"><span class="feature-check">✔</span> Cadastro de clientes e veículos</div>
+        <div class="feature-item"><span class="feature-check">✔</span> Ordens de serviço completas</div>
+        <div class="feature-item"><span class="feature-check">✔</span> Orçamentos com aprovação do cliente</div>
+        <div class="feature-item"><span class="feature-check">✔</span> Agendamentos e lembretes de revisão</div>
+        <div class="feature-item"><span class="feature-check">✔</span> NPS / Avaliações de satisfação</div>
+        <div class="feature-item"><span class="feature-check">✔</span> Cadastro de serviços e produtos</div>
+        <div class="feature-item"><span class="feature-check">✔</span> Controle de estoque e fornecedores</div>
+        <div class="feature-item"><span class="feature-check">✔</span> Importação de XML (notas de compra)</div>
+        <div class="feature-item"><span class="feature-check">✔</span> Financeiro, cobranças e mala direta</div>
+        <div class="feature-item"><span class="feature-check">✔</span> Cartão / Taxas e controle de cheques</div>
+        <div class="feature-item"><span class="feature-check">✔</span> Relatórios e Notas Fiscais (NF-e)</div>
+        <div class="feature-item"><span class="feature-check">✔</span> Gestão de usuários e permissões</div>
+        <div class="feature-item"><span class="feature-check">✔</span> Logs de auditoria e configurações</div>
+        <div class="feature-item"><span class="feature-check">✔</span> Notificações por WhatsApp</div>
+        <div style="font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;padding:.75rem 0 .25rem">Sistema Integrado</div>
+        <div class="feature-item"><span class="feature-check">✔</span> Caixa / PDV</div>
+      </div>
+      <a href="https://wa.me/5535999010261?text=Olá!%20Tenho%20interesse%20no%20MecPRIME" target="_blank" class="card-cta blue">Quero conhecer o MecPRIME →</a>
+    </div>
+
+    <!-- FoodPRIME -->
+    <div class="sistema-card">
+      <div class="card-header">
+        <div class="card-icon orange">🍕</div>
+        <div class="card-name">FoodPRIME</div>
+        <div class="card-type">Sistema para Pizzarias e Lanchonetes</div>
+      </div>
+      <div class="dashboard-preview">
+        <div class="dp-bar">
+          <div class="dp-col" style="height:50%;background:#E67E22;animation-delay:.1s"></div>
+          <div class="dp-col" style="height:90%;background:#E67E22;animation-delay:.2s"></div>
+          <div class="dp-col" style="height:65%;background:#E67E22;animation-delay:.3s"></div>
+          <div class="dp-col" style="height:75%;background:#E67E22;animation-delay:.4s"></div>
+          <div class="dp-col" style="height:40%;background:#E67E22;animation-delay:.5s"></div>
+          <div class="dp-col" style="height:85%;background:#E67E22;animation-delay:.6s"></div>
+          <div class="dp-col" style="height:60%;background:#E67E22;animation-delay:.7s"></div>
+        </div>
+        <div class="dp-stats">
+          <div class="dp-stat" style="color:#E67E22"><strong>47</strong>Pedidos hoje</div>
+          <div class="dp-stat" style="color:#27AE60"><strong>R$3.2k</strong>Faturamento</div>
+          <div class="dp-stat" style="color:#2E86DE"><strong>8</strong>Em preparo</div>
+        </div>
+      </div>
+      <div class="card-features">
+        <div style="font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;padding:.5rem 0 .25rem">Painel Administrativo</div>
+        <div class="feature-item"><span class="feature-check green">✔</span> Dashboard com indicadores do negócio</div>
+        <div class="feature-item"><span class="feature-check green">✔</span> Gestão de pedidos em tempo real</div>
+        <div class="feature-item"><span class="feature-check green">✔</span> Cardápio digital com categorias</div>
+        <div class="feature-item"><span class="feature-check green">✔</span> Mensagens internas e comunicação</div>
+        <div class="feature-item"><span class="feature-check green">✔</span> Cadastro e gestão de motoboys</div>
+        <div class="feature-item"><span class="feature-check green">✔</span> Cadastro de clientes</div>
+        <div class="feature-item"><span class="feature-check green">✔</span> Cadastro e lista de caixas</div>
+        <div class="feature-item"><span class="feature-check green">✔</span> Controle de estoque</div>
+        <div class="feature-item"><span class="feature-check green">✔</span> QR Codes para pedidos na mesa</div>
+        <div class="feature-item"><span class="feature-check green">✔</span> Estação de impressão de comandas</div>
+        <div class="feature-item"><span class="feature-check green">✔</span> Configurações do estabelecimento</div>
+        <div style="font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;padding:.75rem 0 .25rem">Sistemas Integrados</div>
+        <div class="feature-item"><span class="feature-check green">✔</span> Sistema de Caixa (PDV)</div>
+        <div class="feature-item"><span class="feature-check green">✔</span> Sistema de Cozinha (KDS)</div>
+        <div class="feature-item"><span class="feature-check green">✔</span> Sistema de Delivery</div>
+        <div class="feature-item"><span class="feature-check green">✔</span> Sistema do Motoboy</div>
+        <div class="feature-item"><span class="feature-check green">✔</span> Sistema de Pedido (auto-atendimento)</div>
+      </div>
+      <a href="https://wa.me/5535999010261?text=Olá!%20Tenho%20interesse%20no%20FoodPRIME" target="_blank" class="card-cta orange">Quero conhecer o FoodPRIME →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- RECURSOS -->
+<section class="features" id="recursos">
+  <div class="section-label">Por que DevSystem PRIME</div>
+  <h2 class="section-title">Tudo que você precisa em um lugar só</h2>
+  <p class="section-sub">Desenvolvidos com foco em praticidade e resultado real para o seu negócio.</p>
+  <div class="features-grid">
+    <div class="feat">
+      <div class="feat-icon">☁️</div>
+      <h3>100% na nuvem</h3>
+      <p>Acesse de qualquer dispositivo, em qualquer lugar. Sem instalação, sem servidor próprio.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">📱</div>
+      <h3>Funciona no celular</h3>
+      <p>Interface responsiva que funciona perfeitamente em celular, tablet e computador.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">🔒</div>
+      <h3>Dados seguros</h3>
+      <p>Backup automático diário. Seus dados sempre protegidos e disponíveis.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">⚡</div>
+      <h3>Rápido e simples</h3>
+      <p>Interface limpa, sem complicação. Sua equipe aprende a usar em minutos.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">📊</div>
+      <h3>Relatórios em tempo real</h3>
+      <p>Acompanhe o desempenho do seu negócio com dados sempre atualizados.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">🛠️</div>
+      <h3>Suporte dedicado</h3>
+      <p>Atendimento direto com quem desenvolveu o sistema. Sem chatbot, sem fila.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="contato" id="contato">
+  <h2>Pronto para começar?</h2>
+  <p>Entre em contato agora e faça uma demonstração gratuita do sistema ideal para o seu negócio.</p>
+  <div class="contato-cards">
+    <a href="https://wa.me/5535999010261?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20sistemas%20DevSystem%20PRIME" target="_blank" class="contato-card">
+      <div class="contato-icon">💬</div>
+      <div class="contato-info">
+        <small>WhatsApp</small>
+        <strong>(35) 99901-0261</strong>
+      </div>
+    </a>
+    <a href="mailto:filipearibeiro87@gmail.com" class="contato-card">
+      <div class="contato-icon">✉️</div>
+      <div class="contato-info">
+        <small>E-mail</small>
+        <strong>filipearibeiro87@gmail.com</strong>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>DevSystem PRIME</strong> &nbsp;·&nbsp; Sistemas de Gestão Profissional &nbsp;·&nbsp; Todos os direitos reservados © 2026
+</footer>
+
+</body>
+</html>
