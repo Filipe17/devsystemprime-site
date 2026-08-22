@@ -121,7 +121,6 @@
     .sistemas-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
       gap: 2rem; max-width: 1000px; margin: 0 auto;
-      align-items: start;
     }
     .sistema-card {
       background: var(--white); border-radius: 20px;
@@ -331,34 +330,38 @@
       </div>
       <div class="card-features">
         <div style="font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;padding:.5rem 0 .25rem">Painel Administrativo</div>
-        <div class="feature-item"><span class="feature-check green">✔</span> Dashboard com indicadores do negócio</div>
-        <div class="feature-item"><span class="feature-check green">✔</span> Gestão de pedidos em tempo real</div>
-        <div class="feature-item"><span class="feature-check green">✔</span> Mapa de mesas — status visual do salão</div>
-        <div class="feature-item"><span class="feature-check green">✔</span> Cardápio digital com categorias e horários</div>
-        <div class="feature-item"><span class="feature-check green">✔</span> Agendamento de pedido com horário de entrega</div>
-        <div class="feature-item"><span class="feature-check green">✔</span> Cupons de desconto promocionais</div>
-        <div class="feature-item"><span class="feature-check green">✔</span> Programa de fidelidade automático</div>
-        <div class="feature-item"><span class="feature-check green">✔</span> Avaliações dos clientes com estrelas</div>
-        <div class="feature-item"><span class="feature-check green">✔</span> Pagamento online — PIX e cartão (Mercado Pago)</div>
-        <div class="feature-item"><span class="feature-check green">✔</span> Divisão de conta por pessoa ou por item</div>
-        <div class="feature-item"><span class="feature-check green">✔</span> Mensagens internas e comunicação</div>
-        <div class="feature-item"><span class="feature-check green">✔</span> Cadastro e gestão de motoboys</div>
-        <div class="feature-item"><span class="feature-check green">✔</span> Cadastro de clientes</div>
-        <div class="feature-item"><span class="feature-check green">✔</span> Cadastro e lista de caixas</div>
-        <div class="feature-item"><span class="feature-check green">✔</span> Controle de estoque</div>
-        <div class="feature-item"><span class="feature-check green">✔</span> Cadastro de fornecedores</div>
-        <div class="feature-item"><span class="feature-check green">✔</span> Financeiro — Contas a Pagar</div>
-        <div class="feature-item"><span class="feature-check green">✔</span> Relatórios e DRE do negócio</div>
-        <div class="feature-item"><span class="feature-check green">✔</span> QR Codes para pedidos na mesa</div>
-        <div class="feature-item"><span class="feature-check green">✔</span> Impressoras térmicas múltiplas</div>
-        <div class="feature-item"><span class="feature-check green">✔</span> Estação de impressão de comandas</div>
-        <div class="feature-item"><span class="feature-check green">✔</span> Configurações do estabelecimento</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 1rem;">
+          <div class="feature-item"><span class="feature-check green">✔</span> Dashboard do negócio</div>
+          <div class="feature-item"><span class="feature-check green">✔</span> Gestão de pedidos</div>
+          <div class="feature-item"><span class="feature-check green">✔</span> Mapa de mesas</div>
+          <div class="feature-item"><span class="feature-check green">✔</span> Cardápio digital</div>
+          <div class="feature-item"><span class="feature-check green">✔</span> Agendamento de pedidos</div>
+          <div class="feature-item"><span class="feature-check green">✔</span> Cupons de desconto</div>
+          <div class="feature-item"><span class="feature-check green">✔</span> Programa de fidelidade</div>
+          <div class="feature-item"><span class="feature-check green">✔</span> Avaliações com estrelas</div>
+          <div class="feature-item"><span class="feature-check green">✔</span> PIX e cartão (Mercado Pago)</div>
+          <div class="feature-item"><span class="feature-check green">✔</span> Divisão de conta</div>
+          <div class="feature-item"><span class="feature-check green">✔</span> Mensagens internas</div>
+          <div class="feature-item"><span class="feature-check green">✔</span> Gestão de motoboys</div>
+          <div class="feature-item"><span class="feature-check green">✔</span> Cadastro de clientes</div>
+          <div class="feature-item"><span class="feature-check green">✔</span> Cadastro e lista de caixas</div>
+          <div class="feature-item"><span class="feature-check green">✔</span> Controle de estoque</div>
+          <div class="feature-item"><span class="feature-check green">✔</span> Cadastro de fornecedores</div>
+          <div class="feature-item"><span class="feature-check green">✔</span> Financeiro / Contas a Pagar</div>
+          <div class="feature-item"><span class="feature-check green">✔</span> Relatórios e DRE</div>
+          <div class="feature-item"><span class="feature-check green">✔</span> QR Codes para mesas</div>
+          <div class="feature-item"><span class="feature-check green">✔</span> Impressoras térmicas</div>
+          <div class="feature-item"><span class="feature-check green">✔</span> Estação de comandas</div>
+          <div class="feature-item"><span class="feature-check green">✔</span> Configurações</div>
+        </div>
         <div style="font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;padding:.75rem 0 .25rem">Sistemas Integrados</div>
-        <div class="feature-item"><span class="feature-check green">✔</span> Sistema de Caixa (PDV)</div>
-        <div class="feature-item"><span class="feature-check green">✔</span> Sistema de Cozinha (KDS)</div>
-        <div class="feature-item"><span class="feature-check green">✔</span> Sistema de Delivery</div>
-        <div class="feature-item"><span class="feature-check green">✔</span> Sistema do Motoboy</div>
-        <div class="feature-item"><span class="feature-check green">✔</span> Sistema de Pedido (auto-atendimento)</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 1rem;">
+          <div class="feature-item"><span class="feature-check green">✔</span> Caixa (PDV)</div>
+          <div class="feature-item"><span class="feature-check green">✔</span> Cozinha (KDS)</div>
+          <div class="feature-item"><span class="feature-check green">✔</span> Delivery</div>
+          <div class="feature-item"><span class="feature-check green">✔</span> Motoboy</div>
+          <div class="feature-item"><span class="feature-check green">✔</span> Auto-atendimento</div>
+        </div>
       </div>
       <a href="https://wa.me/5535999010261?text=Olá!%20Tenho%20interesse%20no%20FoodPRIME" target="_blank" class="card-cta orange">Quero conhecer o FoodPRIME →</a>
     </div>
