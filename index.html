@@ -128,6 +128,7 @@
       overflow: hidden;
       box-shadow: 0 4px 20px rgba(0,0,0,.06);
       transition: transform .3s, box-shadow .3s;
+      display: flex; flex-direction: column;
     }
     .sistema-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,.1); }
     .card-header {
@@ -164,7 +165,7 @@
     }
     .dp-stat strong { display: block; font-size: .9rem; font-weight: 700; }
 
-    .card-features { padding: 1.5rem 2rem 2rem; }
+    .card-features { padding: 1.5rem 2rem 2rem; flex: 1; }
     .feature-item {
       display: flex; gap: .75rem; align-items: flex-start;
       padding: .55rem 0; border-bottom: 1px solid var(--border);
