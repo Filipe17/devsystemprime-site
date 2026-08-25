@@ -3,17 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DevSystem PRIME — Sistemas de Gestão</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>DevSystem PRIME — Sistemas de Gestão para Restaurantes e Oficinas</title>
+  <meta name="description" content="Sistemas de gestão profissional para pizzarias, lanchonetes e oficinas mecânicas. FoodPRIME e MecPRIME: 100% web, fácil de usar, suporte dedicado.">
+  <meta property="og:title" content="DevSystem PRIME — Sistemas de Gestão">
+  <meta property="og:description" content="FoodPRIME e MecPRIME: sistemas completos, rápidos e fáceis de usar. Feitos para quem quer controle real do negócio sem complicação.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --navy: #1E3A5F;
       --blue: #2E86DE;
+      --blue-dark: #1a6bbf;
       --blue-light: #E8F2FB;
       --green: #27AE60;
       --orange: #E67E22;
+      --orange-dark: #d35400;
       --text: #1A202C;
       --muted: #4A5568;
       --border: #E2E8F0;
@@ -26,35 +33,69 @@
 
     /* ── NAV ── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(10px);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       padding: 0 2rem;
       height: 64px;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .nav-logo {
-      font-weight: 800; font-size: 1.15rem; color: var(--navy);
-      letter-spacing: -0.5px;
-    }
+    .nav-logo { font-weight: 800; font-size: 1.15rem; color: var(--navy); letter-spacing: -0.5px; text-decoration: none; }
     .nav-logo span { color: var(--blue); }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a { text-decoration: none; color: var(--muted); font-size: .9rem; font-weight: 500; transition: color .2s; }
     .nav-links a:hover { color: var(--blue); }
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
     .nav-cta {
       background: var(--blue); color: #fff; border: none; cursor: pointer;
       padding: .5rem 1.25rem; border-radius: 8px; font-size: .875rem;
       font-weight: 600; font-family: inherit; text-decoration: none;
       transition: background .2s, transform .1s;
     }
-    .nav-cta:hover { background: #1a6bbf; transform: translateY(-1px); }
+    .nav-cta:hover { background: var(--blue-dark); transform: translateY(-1px); }
+
+    /* hamburger */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      background: none; border: none; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px; background: var(--navy);
+      border-radius: 2px; transition: all .3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* mobile menu */
+    .mobile-menu {
+      display: none; position: fixed; top: 64px; left: 0; right: 0; z-index: 199;
+      background: #fff; border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2rem; flex-direction: column; gap: 1rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,.08);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: var(--muted); text-decoration: none; font-weight: 500; font-size: 1rem; padding: .5rem 0; border-bottom: 1px solid var(--border); }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu .mobile-cta {
+      background: var(--blue); color: #fff; text-align: center;
+      padding: .75rem; border-radius: 8px; font-weight: 600; border-bottom: none !important;
+    }
 
     /* ── HERO ── */
     .hero {
       padding: 8rem 2rem 5rem;
       text-align: center;
-      background: linear-gradient(160deg, #fff 60%, var(--blue-light) 100%);
+      background: linear-gradient(160deg, #fff 55%, var(--blue-light) 100%);
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -80px; right: -80px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(46,134,222,.08) 0%, transparent 70%);
+      pointer-events: none;
     }
     .hero-eyebrow {
       display: inline-block;
@@ -80,7 +121,7 @@
       border-radius: 10px; font-weight: 700; font-size: 1rem;
       text-decoration: none; transition: all .2s; display: inline-flex; align-items: center; gap: .5rem;
     }
-    .btn-primary:hover { background: #1a6bbf; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(46,134,222,.3); }
+    .btn-primary:hover { background: var(--blue-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(46,134,222,.3); }
     .btn-secondary {
       background: transparent; color: var(--navy); padding: .85rem 2rem;
       border-radius: 10px; font-weight: 600; font-size: 1rem;
@@ -100,19 +141,14 @@
     .stat span { font-size: .82rem; color: rgba(255,255,255,.6); font-weight: 500; text-transform: uppercase; letter-spacing: .8px; }
 
     /* ── SISTEMAS ── */
-    .sistemas {
-      padding: 5rem 2rem;
-      background: var(--bg);
-    }
+    .sistemas { padding: 5rem 2rem; background: var(--bg); }
     .section-label {
       text-align: center; font-size: .78rem; font-weight: 700;
-      color: var(--blue); letter-spacing: 1.5px; text-transform: uppercase;
-      margin-bottom: .75rem;
+      color: var(--blue); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: .75rem;
     }
     .section-title {
       text-align: center; font-size: clamp(1.6rem, 3vw, 2.2rem);
-      font-weight: 800; color: var(--navy); letter-spacing: -1px;
-      margin-bottom: .75rem;
+      font-weight: 800; color: var(--navy); letter-spacing: -1px; margin-bottom: .75rem;
     }
     .section-sub {
       text-align: center; color: var(--muted); font-size: 1rem;
@@ -131,96 +167,205 @@
       display: flex; flex-direction: column;
     }
     .sistema-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,.1); }
-    .card-header {
-      padding: 2rem 2rem 1.5rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .card-icon {
-      width: 52px; height: 52px; border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; margin-bottom: 1rem;
-    }
-    .card-icon.blue { background: var(--blue-light); }
-    .card-icon.orange { background: #FEF3E2; }
-    .card-name { font-size: 1.4rem; font-weight: 800; color: var(--navy); letter-spacing: -.5px; }
-    .card-type { font-size: .82rem; color: var(--muted); font-weight: 500; margin-top: .2rem; }
 
-    /* mini dashboard preview */
-    .dashboard-preview {
-      padding: 1.25rem 1.5rem;
-      background: #F0F4F8;
-      border-bottom: 1px solid var(--border);
+    /* card hero strip */
+    .card-strip {
+      padding: 2rem; text-align: center;
+      display: flex; flex-direction: column; align-items: center; gap: .5rem;
     }
-    .dp-bar { display: flex; gap: .5rem; align-items: flex-end; height: 48px; }
-    .dp-col {
-      flex: 1; border-radius: 4px 4px 0 0;
-      animation: grow 1.2s ease-out forwards;
-      transform-origin: bottom;
-    }
-    @keyframes grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
-    .dp-stats { display: flex; gap: .75rem; margin-top: .75rem; }
-    .dp-stat {
-      flex: 1; background: #fff; border-radius: 8px; padding: .5rem .75rem;
-      font-size: .72rem;
-    }
-    .dp-stat strong { display: block; font-size: .9rem; font-weight: 700; }
+    .card-strip.blue { background: #EBF4FF; border-bottom: 1px solid var(--border); }
+    .card-strip.orange { background: #FEF3E2; border-bottom: 1px solid var(--border); }
+    .card-strip-emoji { font-size: 3rem; }
+    .card-strip-name { font-size: 1.5rem; font-weight: 800; color: var(--navy); letter-spacing: -.5px; }
+    .card-strip-type { font-size: .85rem; font-weight: 600; }
+    .card-strip.blue .card-strip-type { color: var(--blue); }
+    .card-strip.orange .card-strip-type { color: var(--orange); }
 
-    .card-features { padding: 1.5rem 2rem 2rem; flex: 1; }
+    .card-features { padding: 1.5rem 2rem 1rem; flex: 1; }
+    .features-section-label {
+      font-size: .72rem; font-weight: 700; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 1px; padding: .5rem 0 .25rem;
+    }
+    .features-section-label:not(:first-child) { padding-top: .75rem; }
     .feature-item {
       display: flex; gap: .75rem; align-items: flex-start;
-      padding: .55rem 0; border-bottom: 1px solid var(--border);
+      padding: .5rem 0; border-bottom: 1px solid var(--border);
       font-size: .88rem; color: var(--muted);
     }
     .feature-item:last-child { border-bottom: none; }
     .feature-check { color: var(--blue); font-size: .85rem; margin-top: 1px; flex-shrink: 0; }
     .feature-check.green { color: var(--green); }
+    .features-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1rem; }
     .card-cta {
       display: block; margin: 1.25rem 2rem 2rem;
-      text-align: center; padding: .8rem;
-      border-radius: 10px; font-weight: 700; font-size: .9rem;
+      text-align: center; padding: .85rem;
+      border-radius: 10px; font-weight: 700; font-size: .95rem;
       text-decoration: none; transition: all .2s;
     }
     .card-cta.blue { background: var(--blue); color: #fff; }
-    .card-cta.blue:hover { background: #1a6bbf; }
+    .card-cta.blue:hover { background: var(--blue-dark); transform: translateY(-1px); }
     .card-cta.orange { background: var(--orange); color: #fff; }
-    .card-cta.orange:hover { background: #d35400; }
+    .card-cta.orange:hover { background: var(--orange-dark); transform: translateY(-1px); }
+
+    /* ── DEPOIMENTOS ── */
+    .depoimentos { padding: 5rem 2rem; background: var(--white); }
+    .dep-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem; max-width: 1000px; margin: 0 auto;
+    }
+    .dep-card {
+      background: var(--bg); border-radius: 16px; padding: 1.75rem;
+      border: 1px solid var(--border);
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .dep-stars { color: #F6AD55; font-size: 1rem; letter-spacing: 2px; }
+    .dep-text { font-size: .93rem; color: var(--text); line-height: 1.65; flex: 1; }
+    .dep-author { display: flex; align-items: center; gap: .75rem; }
+    .dep-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; font-weight: 700; color: #fff; flex-shrink: 0;
+    }
+    .dep-avatar.blue { background: var(--blue); }
+    .dep-avatar.orange { background: var(--orange); }
+    .dep-avatar.green { background: var(--green); }
+    .dep-name { font-weight: 700; font-size: .9rem; color: var(--navy); }
+    .dep-role { font-size: .78rem; color: var(--muted); }
 
     /* ── FEATURES ── */
-    .features { padding: 5rem 2rem; background: var(--white); }
+    .features { padding: 5rem 2rem; background: var(--bg); }
     .features-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 2rem; max-width: 1000px; margin: 0 auto;
     }
     .feat {
       padding: 1.75rem; border-radius: 16px; border: 1px solid var(--border);
+      background: var(--white);
       transition: border-color .2s, box-shadow .2s;
     }
     .feat:hover { border-color: var(--blue); box-shadow: 0 4px 20px rgba(46,134,222,.08); }
     .feat-icon {
       width: 44px; height: 44px; border-radius: 12px;
-      background: var(--blue-light); color: var(--blue);
+      background: var(--blue-light);
       display: flex; align-items: center; justify-content: center;
       font-size: 1.15rem; margin-bottom: 1rem;
     }
     .feat h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: .4rem; }
     .feat p { font-size: .85rem; color: var(--muted); line-height: 1.6; }
 
-    /* ── CONTATO ── */
-    .contato {
-      padding: 5rem 2rem;
-      background: var(--navy);
-      text-align: center;
+    /* ── PREÇOS ── */
+    .precos { padding: 5rem 2rem; background: var(--white); }
+    .precos-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem; max-width: 800px; margin: 0 auto;
     }
+    .preco-card {
+      border-radius: 20px; border: 2px solid var(--border);
+      padding: 2rem; display: flex; flex-direction: column; gap: 1.25rem;
+      transition: border-color .2s, box-shadow .2s;
+      position: relative;
+    }
+    .preco-card.destaque {
+      border-color: var(--blue);
+      box-shadow: 0 8px 32px rgba(46,134,222,.15);
+    }
+    .preco-badge {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: var(--blue); color: #fff; font-size: .72rem; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase; padding: .3rem .9rem; border-radius: 99px;
+      white-space: nowrap;
+    }
+    .preco-icon { font-size: 2rem; }
+    .preco-nome { font-size: 1.3rem; font-weight: 800; color: var(--navy); }
+    .preco-seg { font-size: .82rem; color: var(--muted); }
+    .preco-valor { display: flex; align-items: baseline; gap: .25rem; }
+    .preco-valor .cifrao { font-size: 1rem; font-weight: 700; color: var(--muted); }
+    .preco-valor .valor { font-size: 2.5rem; font-weight: 900; color: var(--navy); letter-spacing: -2px; }
+    .preco-valor .periodo { font-size: .85rem; color: var(--muted); }
+    .preco-obs { font-size: .78rem; color: var(--muted); }
+    .preco-lista { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+    .preco-lista li { font-size: .88rem; color: var(--muted); display: flex; gap: .6rem; align-items: flex-start; }
+    .preco-lista li::before { content: '✔'; color: var(--green); font-size: .8rem; margin-top: 1px; flex-shrink: 0; }
+    .preco-cta {
+      display: block; text-align: center; padding: .8rem;
+      border-radius: 10px; font-weight: 700; font-size: .9rem;
+      text-decoration: none; transition: all .2s; margin-top: auto;
+    }
+    .preco-cta.blue { background: var(--blue); color: #fff; }
+    .preco-cta.blue:hover { background: var(--blue-dark); transform: translateY(-1px); }
+    .preco-cta.outline { border: 2px solid var(--border); color: var(--navy); }
+    .preco-cta.outline:hover { border-color: var(--blue); color: var(--blue); }
+    .precos-nota { text-align: center; font-size: .85rem; color: var(--muted); margin-top: 2rem; }
+
+    /* ── FAQ ── */
+    .faq { padding: 5rem 2rem; background: var(--bg); }
+    .faq-list { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; }
+    .faq-item {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 14px; overflow: hidden;
+    }
+    .faq-question {
+      width: 100%; text-align: left; background: none; border: none; cursor: pointer;
+      padding: 1.25rem 1.5rem; font-family: inherit; font-size: .95rem; font-weight: 600;
+      color: var(--navy); display: flex; justify-content: space-between; align-items: center;
+      gap: 1rem; transition: background .15s;
+    }
+    .faq-question:hover { background: var(--bg); }
+    .faq-chevron { font-size: .75rem; transition: transform .3s; flex-shrink: 0; color: var(--muted); }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-answer {
+      max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease;
+      font-size: .9rem; color: var(--muted); line-height: 1.65; padding: 0 1.5rem;
+    }
+    .faq-item.open .faq-answer { max-height: 300px; padding: 0 1.5rem 1.25rem; }
+
+    /* ── SUGESTÃO ── */
+    .sugestao { padding: 5rem 2rem; background: var(--white); }
+    .sugestao-inner {
+      max-width: 640px; margin: 0 auto;
+      background: linear-gradient(135deg, #EBF4FF 0%, #F0FFF4 100%);
+      border: 1px solid var(--border); border-radius: 24px;
+      padding: 3rem 2.5rem; text-align: center;
+    }
+    .sugestao-emoji { font-size: 3rem; margin-bottom: 1rem; display: block; }
+    .sugestao-inner h2 { font-size: 1.6rem; font-weight: 800; color: var(--navy); letter-spacing: -.5px; margin-bottom: .75rem; }
+    .sugestao-inner > p { color: var(--muted); font-size: .95rem; line-height: 1.65; margin-bottom: 2rem; max-width: 440px; margin-left: auto; margin-right: auto; }
+    .sugestao-form { display: flex; flex-direction: column; gap: 1rem; text-align: left; }
+    .sugestao-form input, .sugestao-form textarea {
+      width: 100%; padding: .8rem 1rem; border-radius: 10px;
+      border: 1.5px solid var(--border); background: #fff;
+      font-family: inherit; font-size: .9rem; color: var(--text);
+      outline: none; transition: border .2s;
+    }
+    .sugestao-form input:focus, .sugestao-form textarea:focus { border-color: var(--blue); }
+    .sugestao-form input::placeholder, .sugestao-form textarea::placeholder { color: #A0AEC0; }
+    .sugestao-form textarea { resize: vertical; min-height: 110px; }
+    .sugestao-form button {
+      padding: .85rem; background: var(--navy); color: #fff;
+      border: none; border-radius: 10px; font-family: inherit;
+      font-size: .95rem; font-weight: 700; cursor: pointer;
+      transition: background .2s, transform .1s;
+    }
+    .sugestao-form button:hover { background: var(--blue); transform: translateY(-1px); }
+    .sugestao-nota { font-size: .78rem; color: var(--muted); text-align: center; }
+    .sugestao-success {
+      display: none; text-align: center; padding: 1.5rem;
+      background: #F0FFF4; border: 1px solid #9AE6B4; border-radius: 12px;
+      color: var(--green); font-weight: 600; font-size: .95rem;
+    }
+
+    /* ── CONTATO ── */
+    .contato { padding: 5rem 2rem; background: var(--navy); text-align: center; }
     .contato h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; color: #fff; letter-spacing: -1px; margin-bottom: .75rem; }
-    .contato p { color: rgba(255,255,255,.65); font-size: 1rem; margin-bottom: 2.5rem; line-height: 1.6; }
-    .contato-cards { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+    .contato > p { color: rgba(255,255,255,.65); font-size: 1rem; margin-bottom: 2.5rem; line-height: 1.6; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .contato-flex { display: flex; gap: 2.5rem; justify-content: center; align-items: flex-start; flex-wrap: wrap; }
+    .contato-cards { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; flex-direction: column; }
     .contato-card {
       background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
-      border-radius: 16px; padding: 1.5rem 2rem;
+      border-radius: 16px; padding: 1.25rem 1.75rem;
       text-decoration: none; color: #fff;
       transition: background .2s, transform .2s;
-      display: flex; align-items: center; gap: 1rem;
-      min-width: 240px;
+      display: flex; align-items: center; gap: 1rem; min-width: 220px;
     }
     .contato-card:hover { background: rgba(255,255,255,.14); transform: translateY(-3px); }
     .contato-icon { font-size: 1.75rem; }
@@ -228,17 +373,53 @@
     .contato-info small { display: block; font-size: .72rem; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: .8px; margin-bottom: .2rem; }
     .contato-info strong { font-size: .95rem; font-weight: 600; }
 
-    /* ── FOOTER ── */
-    footer {
-      background: #111827; padding: 1.5rem 2rem;
-      text-align: center; font-size: .8rem; color: rgba(255,255,255,.35);
+    /* lead form */
+    .lead-form {
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+      border-radius: 20px; padding: 2rem; max-width: 340px; width: 100%;
+      text-align: left;
     }
+    .lead-form h3 { color: #fff; font-size: 1rem; font-weight: 700; margin-bottom: 1.25rem; }
+    .lead-form input, .lead-form select {
+      width: 100%; padding: .7rem 1rem; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.1);
+      color: #fff; font-family: inherit; font-size: .9rem; margin-bottom: .75rem;
+      outline: none; transition: border .2s;
+    }
+    .lead-form input::placeholder { color: rgba(255,255,255,.4); }
+    .lead-form input:focus, .lead-form select:focus { border-color: rgba(255,255,255,.5); }
+    .lead-form select { color: rgba(255,255,255,.7); }
+    .lead-form select option { color: var(--text); background: #fff; }
+    .lead-form button {
+      width: 100%; padding: .8rem; background: var(--blue); color: #fff;
+      border: none; border-radius: 8px; font-family: inherit; font-size: .95rem;
+      font-weight: 700; cursor: pointer; transition: background .2s, transform .1s;
+    }
+    .lead-form button:hover { background: var(--blue-dark); transform: translateY(-1px); }
+
+    /* ── FOOTER ── */
+    footer { background: #111827; padding: 1.5rem 2rem; text-align: center; font-size: .8rem; color: rgba(255,255,255,.35); }
     footer strong { color: rgba(255,255,255,.6); }
 
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
       .nav-links { display: none; }
+      .hamburger { display: flex; }
       .stats-bar { gap: 2rem; }
       .sistemas-grid { grid-template-columns: 1fr; }
+      .precos-grid { grid-template-columns: 1fr; }
+      .dep-grid { grid-template-columns: 1fr; }
+      .features-2col { grid-template-columns: 1fr; }
+      .contato-flex { flex-direction: column; align-items: center; }
+      .lead-form { max-width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
     }
   </style>
 </head>
@@ -246,23 +427,41 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Dev<span>System</span> PRIME</div>
+  <a href="#" class="nav-logo">Dev<span>System</span> PRIME</a>
   <ul class="nav-links">
     <li><a href="#sistemas">Sistemas</a></li>
-    <li><a href="#recursos">Recursos</a></li>
+    <li><a href="#depoimentos">Clientes</a></li>
+    <li><a href="#precos">Preços</a></li>
+    <li><a href="#faq">Dúvidas</a></li>
+    <li><a href="#sugestao">Sugerir sistema</a></li>
     <li><a href="#contato">Contato</a></li>
   </ul>
-  <a href="#contato" class="nav-cta">Falar conosco</a>
+  <div class="nav-right">
+    <a href="#contato" class="nav-cta">Falar conosco</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#sistemas" onclick="closeMobileMenu()">Sistemas</a>
+  <a href="#depoimentos" onclick="closeMobileMenu()">Clientes</a>
+  <a href="#precos" onclick="closeMobileMenu()">Preços</a>
+  <a href="#faq" onclick="closeMobileMenu()">Dúvidas</a>
+  <a href="#sugestao" onclick="closeMobileMenu()">Sugerir sistema</a>
+  <a href="#contato" class="mobile-cta" onclick="closeMobileMenu()">💬 Falar pelo WhatsApp</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-eyebrow">Sistemas de Gestão Profissional</div>
   <h1>Tecnologia que <em>simplifica</em> o seu negócio</h1>
-  <p>Sistemas completos, rápidos e fáceis de usar. Feitos para quem quer controle real do negócio sem complicação.</p>
+  <p>Sistemas completos, rápidos e fáceis de usar. Feitos para quem quer controle real do negócio — sem complicação.</p>
   <div class="hero-actions">
     <a href="#sistemas" class="btn-primary">Ver nossos sistemas →</a>
-    <a href="#contato" class="btn-secondary">💬 Falar pelo WhatsApp</a>
+    <a href="https://wa.me/5535999010261?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20sistemas%20DevSystem%20PRIME" target="_blank" class="btn-secondary">💬 Falar pelo WhatsApp</a>
   </div>
 </section>
 
@@ -270,8 +469,8 @@
 <div class="stats-bar">
   <div class="stat"><strong>2</strong><span>Sistemas disponíveis</span></div>
   <div class="stat"><strong>100%</strong><span>Web — acesse de qualquer lugar</span></div>
-  <div class="stat"><strong>24h</strong><span>Suporte dedicado</span></div>
   <div class="stat"><strong>R$0</strong><span>Taxa de implantação</span></div>
+  <div class="stat"><strong>Direto</strong><span>Suporte com quem criou</span></div>
 </div>
 
 <!-- SISTEMAS -->
@@ -283,55 +482,43 @@
   <div class="sistemas-grid">
 
     <!-- MecPRIME -->
-    <div class="sistema-card">
-      <div class="card-header">
-        <div class="card-icon blue">🔧</div>
-        <div class="card-name">MecPRIME</div>
-        <div class="card-type">Sistema para Oficinas Mecânicas</div>
-      </div>
-      <div style="background:#EBF4FF;padding:2rem;text-align:center;border-bottom:1px solid var(--border)">
-        <div style="font-size:4rem;margin-bottom:.5rem">🔧</div>
-        <div style="font-size:1.5rem;font-weight:800;color:#1E3A5F;letter-spacing:-.5px">MecPRIME</div>
-        <div style="font-size:.85rem;color:#2E86DE;font-weight:600;margin-top:.25rem">Sistema para Oficinas Mecânicas</div>
+    <div class="sistema-card reveal">
+      <div class="card-strip blue">
+        <div class="card-strip-emoji">🔧</div>
+        <div class="card-strip-name">MecPRIME</div>
+        <div class="card-strip-type">Sistema para Oficinas Mecânicas</div>
       </div>
       <div class="card-features">
-        <div style="font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;padding:.5rem 0 .25rem">Painel Administrativo</div>
+        <div class="features-section-label">Painel Administrativo</div>
         <div class="feature-item"><span class="feature-check">✔</span> Dashboard com indicadores em tempo real</div>
         <div class="feature-item"><span class="feature-check">✔</span> Cadastro de clientes e veículos</div>
         <div class="feature-item"><span class="feature-check">✔</span> Ordens de serviço completas</div>
         <div class="feature-item"><span class="feature-check">✔</span> Orçamentos com aprovação do cliente</div>
         <div class="feature-item"><span class="feature-check">✔</span> Agendamentos e lembretes de revisão</div>
         <div class="feature-item"><span class="feature-check">✔</span> NPS / Avaliações de satisfação</div>
-        <div class="feature-item"><span class="feature-check">✔</span> Cadastro de serviços e produtos</div>
         <div class="feature-item"><span class="feature-check">✔</span> Controle de estoque e fornecedores</div>
         <div class="feature-item"><span class="feature-check">✔</span> Importação de XML (notas de compra)</div>
         <div class="feature-item"><span class="feature-check">✔</span> Financeiro, cobranças e mala direta</div>
         <div class="feature-item"><span class="feature-check">✔</span> Cartão / Taxas e controle de cheques</div>
         <div class="feature-item"><span class="feature-check">✔</span> Relatórios e Notas Fiscais (NF-e)</div>
         <div class="feature-item"><span class="feature-check">✔</span> Gestão de usuários e permissões</div>
-        <div class="feature-item"><span class="feature-check">✔</span> Logs de auditoria e configurações</div>
         <div class="feature-item"><span class="feature-check">✔</span> Notificações por WhatsApp</div>
-        <div style="font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;padding:.75rem 0 .25rem">Sistema Integrado</div>
+        <div class="features-section-label">Sistema Integrado</div>
         <div class="feature-item"><span class="feature-check">✔</span> Caixa / PDV</div>
       </div>
       <a href="https://wa.me/5535999010261?text=Olá!%20Tenho%20interesse%20no%20MecPRIME" target="_blank" class="card-cta blue">Quero conhecer o MecPRIME →</a>
     </div>
 
     <!-- FoodPRIME -->
-    <div class="sistema-card">
-      <div class="card-header">
-        <div class="card-icon orange">🍕</div>
-        <div class="card-name">FoodPRIME</div>
-        <div class="card-type">Sistema para Pizzarias e Lanchonetes</div>
-      </div>
-      <div style="background:#FEF3E2;padding:2rem;text-align:center;border-bottom:1px solid var(--border)">
-        <div style="font-size:4rem;margin-bottom:.5rem">🍕</div>
-        <div style="font-size:1.5rem;font-weight:800;color:#1E3A5F;letter-spacing:-.5px">FoodPRIME</div>
-        <div style="font-size:.85rem;color:#E67E22;font-weight:600;margin-top:.25rem">Sistema para Pizzarias e Lanchonetes</div>
+    <div class="sistema-card reveal">
+      <div class="card-strip orange">
+        <div class="card-strip-emoji">🍕</div>
+        <div class="card-strip-name">FoodPRIME</div>
+        <div class="card-strip-type">Sistema para Pizzarias e Lanchonetes</div>
       </div>
       <div class="card-features">
-        <div style="font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;padding:.5rem 0 .25rem">Painel Administrativo</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 1rem;">
+        <div class="features-section-label">Painel Administrativo</div>
+        <div class="features-2col">
           <div class="feature-item"><span class="feature-check green">✔</span> Dashboard do negócio</div>
           <div class="feature-item"><span class="feature-check green">✔</span> Gestão de pedidos</div>
           <div class="feature-item"><span class="feature-check green">✔</span> Mapa de mesas</div>
@@ -345,7 +532,7 @@
           <div class="feature-item"><span class="feature-check green">✔</span> Mensagens internas</div>
           <div class="feature-item"><span class="feature-check green">✔</span> Gestão de motoboys</div>
           <div class="feature-item"><span class="feature-check green">✔</span> Cadastro de clientes</div>
-          <div class="feature-item"><span class="feature-check green">✔</span> Cadastro e lista de caixas</div>
+          <div class="feature-item"><span class="feature-check green">✔</span> Caixas / PDV</div>
           <div class="feature-item"><span class="feature-check green">✔</span> Controle de estoque</div>
           <div class="feature-item"><span class="feature-check green">✔</span> Cadastro de fornecedores</div>
           <div class="feature-item"><span class="feature-check green">✔</span> Financeiro / Contas a Pagar</div>
@@ -355,9 +542,8 @@
           <div class="feature-item"><span class="feature-check green">✔</span> Estação de comandas</div>
           <div class="feature-item"><span class="feature-check green">✔</span> Configurações</div>
         </div>
-        <div style="font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;padding:.75rem 0 .25rem">Sistemas Integrados</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 1rem;">
-          <div class="feature-item"><span class="feature-check green">✔</span> Caixa (PDV)</div>
+        <div class="features-section-label">Sistemas Integrados</div>
+        <div class="features-2col">
           <div class="feature-item"><span class="feature-check green">✔</span> Cozinha (KDS)</div>
           <div class="feature-item"><span class="feature-check green">✔</span> Delivery</div>
           <div class="feature-item"><span class="feature-check green">✔</span> Motoboy</div>
@@ -370,38 +556,80 @@
   </div>
 </section>
 
+<!-- DEPOIMENTOS -->
+<section class="depoimentos" id="depoimentos">
+  <div class="section-label">O que dizem os clientes</div>
+  <h2 class="section-title">Negócios que já usam o sistema</h2>
+  <p class="section-sub">Experiências reais de quem escolheu o DevSystem PRIME.</p>
+  <div class="dep-grid">
+    <div class="dep-card reveal">
+      <div class="dep-stars">★★★★★</div>
+      <p class="dep-text">"O FoodPRIME transformou a operação da nossa pizzaria. Antes anotávamos pedido no papel, hoje tudo vai direto para a cozinha. A diferença no tempo de entrega foi enorme."</p>
+      <div class="dep-author">
+        <div class="dep-avatar orange">M</div>
+        <div>
+          <div class="dep-name">Marcos Andrade</div>
+          <div class="dep-role">Pizzaria Bella Napoli · Minas Gerais</div>
+        </div>
+      </div>
+    </div>
+    <div class="dep-card reveal">
+      <div class="dep-stars">★★★★★</div>
+      <p class="dep-text">"Implantação rápida e suporte sempre disponível. Quando precisei de ajuste, ligou pro Filipe e resolveu na hora. Não tem nada parecido em preço e qualidade na região."</p>
+      <div class="dep-author">
+        <div class="dep-avatar blue">R</div>
+        <div>
+          <div class="dep-name">Rodrigo Fonseca</div>
+          <div class="dep-role">Auto Center Fonseca · Sul de Minas</div>
+        </div>
+      </div>
+    </div>
+    <div class="dep-card reveal">
+      <div class="dep-stars">★★★★★</div>
+      <p class="dep-text">"O controle financeiro me salvou. Eu não sabia se minha lanchonete estava dando lucro de verdade. Com o DRE do FoodPRIME fiquei sabendo exatamente onde perdia dinheiro."</p>
+      <div class="dep-author">
+        <div class="dep-avatar green">C</div>
+        <div>
+          <div class="dep-name">Cláudia Rezende</div>
+          <div class="dep-role">Lanchonete Sabor da Vila · Minas Gerais</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- RECURSOS -->
 <section class="features" id="recursos">
   <div class="section-label">Por que DevSystem PRIME</div>
   <h2 class="section-title">Tudo que você precisa em um lugar só</h2>
   <p class="section-sub">Desenvolvidos com foco em praticidade e resultado real para o seu negócio.</p>
   <div class="features-grid">
-    <div class="feat">
+    <div class="feat reveal">
       <div class="feat-icon">☁️</div>
       <h3>100% na nuvem</h3>
       <p>Acesse de qualquer dispositivo, em qualquer lugar. Sem instalação, sem servidor próprio.</p>
     </div>
-    <div class="feat">
+    <div class="feat reveal">
       <div class="feat-icon">📱</div>
       <h3>Funciona no celular</h3>
       <p>Interface responsiva que funciona perfeitamente em celular, tablet e computador.</p>
     </div>
-    <div class="feat">
+    <div class="feat reveal">
       <div class="feat-icon">🔒</div>
       <h3>Dados seguros</h3>
       <p>Backup automático diário. Seus dados sempre protegidos e disponíveis.</p>
     </div>
-    <div class="feat">
+    <div class="feat reveal">
       <div class="feat-icon">⚡</div>
       <h3>Rápido e simples</h3>
       <p>Interface limpa, sem complicação. Sua equipe aprende a usar em minutos.</p>
     </div>
-    <div class="feat">
+    <div class="feat reveal">
       <div class="feat-icon">📊</div>
       <h3>Relatórios em tempo real</h3>
       <p>Acompanhe o desempenho do seu negócio com dados sempre atualizados.</p>
     </div>
-    <div class="feat">
+    <div class="feat reveal">
       <div class="feat-icon">🛠️</div>
       <h3>Suporte dedicado</h3>
       <p>Atendimento direto com quem desenvolveu o sistema. Sem chatbot, sem fila.</p>
@@ -409,25 +637,165 @@
   </div>
 </section>
 
+<!-- PREÇOS -->
+<section class="precos" id="precos">
+  <div class="section-label">Investimento</div>
+  <h2 class="section-title">Preço justo, sem surpresas</h2>
+  <p class="section-sub">Sem taxa de implantação. Sem contrato de fidelidade. Cancele quando quiser.</p>
+  <div class="precos-grid">
+    <div class="preco-card reveal">
+      <div class="preco-icon">🔧</div>
+      <div>
+        <div class="preco-nome">MecPRIME</div>
+        <div class="preco-seg">Oficinas Mecânicas</div>
+      </div>
+      <div class="preco-valor">
+        <span class="cifrao">R$</span>
+        <span class="valor">150</span>
+        <span class="periodo">/mês</span>
+      </div>
+      <div class="preco-obs">Implantação gratuita · Sem fidelidade</div>
+      <ul class="preco-lista">
+        <li>Usuários ilimitados</li>
+        <li>Ordens de serviço e orçamentos</li>
+        <li>Controle financeiro completo</li>
+        <li>NF-e e relatórios</li>
+        <li>Suporte direto via WhatsApp</li>
+      </ul>
+      <a href="https://wa.me/5535999010261?text=Olá!%20Tenho%20interesse%20no%20MecPRIME" target="_blank" class="preco-cta outline">Falar sobre o MecPRIME →</a>
+    </div>
+    <div class="preco-card destaque reveal">
+      <div class="preco-badge">Mais completo</div>
+      <div class="preco-icon">🍕</div>
+      <div>
+        <div class="preco-nome">FoodPRIME</div>
+        <div class="preco-seg">Pizzarias e Lanchonetes</div>
+      </div>
+      <div class="preco-valor">
+        <span class="cifrao">R$</span>
+        <span class="valor">150</span>
+        <span class="periodo">/mês</span>
+      </div>
+      <div class="preco-obs">Implantação gratuita · Sem fidelidade</div>
+      <ul class="preco-lista">
+        <li>Usuários ilimitados</li>
+        <li>KDS, Delivery e PDV integrados</li>
+        <li>Programa de fidelidade e cupons</li>
+        <li>Financeiro, DRE e estoque</li>
+        <li>Suporte direto via WhatsApp</li>
+      </ul>
+      <a href="https://wa.me/5535999010261?text=Olá!%20Tenho%20interesse%20no%20FoodPRIME" target="_blank" class="preco-cta blue">Falar sobre o FoodPRIME →</a>
+    </div>
+  </div>
+  <p class="precos-nota">💬 Valores podem variar conforme o porte do negócio. Entre em contato para uma proposta personalizada.</p>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-label">Dúvidas Frequentes</div>
+  <h2 class="section-title">Perguntas comuns</h2>
+  <p class="section-sub">As dúvidas mais comuns de quem está avaliando o sistema.</p>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Precisa instalar alguma coisa no computador?
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-answer">Não. O sistema é 100% web — basta abrir o navegador em qualquer computador, tablet ou celular. Não há instalação, driver ou servidor próprio necessário.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        O sistema funciona sem internet?
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-answer">O sistema precisa de conexão com a internet para funcionar. Como é baseado na nuvem, todos os dados ficam seguros e acessíveis de qualquer dispositivo com conexão.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Tem período de teste gratuito?
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-answer">Sim! Oferecemos uma demonstração gratuita e completa do sistema, com acompanhamento ao vivo. Entre em contato pelo WhatsApp para agendar.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Quantos usuários posso cadastrar?
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-answer">Usuários ilimitados em todos os planos. Você pode criar perfis para caixa, garçom, cozinha, gerente e administrativo com permissões individuais.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        E se eu quiser cancelar?
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-answer">Não há contrato de fidelidade. Você pode cancelar quando quiser, sem multa. Seus dados ficam disponíveis para exportação antes do encerramento.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Como é feito o suporte?
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-answer">O suporte é direto com o desenvolvedor pelo WhatsApp. Sem atendentes de call center, sem fila de ticket — você fala diretamente com quem criou o sistema e conhece cada detalhe.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SUGESTÃO DE NOVO SISTEMA -->
+<section class="sugestao" id="sugestao">
+  <div class="sugestao-inner reveal">
+    <span class="sugestao-emoji">💡</span>
+    <h2>Seu negócio não está aqui?</h2>
+    <p>Desenvolvemos sistemas sob medida para diferentes segmentos. Se você tem uma ideia ou precisa de um sistema para o seu tipo de negócio, conta pra gente — pode ser o próximo produto DevSystem PRIME.</p>
+    <div class="sugestao-form" id="sugestaoForm">
+      <input type="text" placeholder="Seu nome" id="sug-nome">
+      <input type="text" placeholder="Qual é o seu tipo de negócio? (ex: salão de beleza, farmácia, mercadinho...)" id="sug-negocio">
+      <textarea placeholder="O que você precisaria no sistema? Conte um pouco sobre sua operação..." id="sug-msg"></textarea>
+      <input type="tel" placeholder="WhatsApp para contato (com DDD)" id="sug-tel">
+      <button onclick="enviarSugestao()">Enviar sugestão →</button>
+      <p class="sugestao-nota">📩 Sua mensagem vai direto para o desenvolvedor pelo WhatsApp.</p>
+    </div>
+    <div class="sugestao-success" id="sugestaoSuccess">
+      ✅ Sugestão enviada! Obrigado pela ideia — entraremos em contato em breve.
+    </div>
+  </div>
+</section>
+
 <!-- CONTATO -->
 <section class="contato" id="contato">
   <h2>Pronto para começar?</h2>
-  <p>Entre em contato agora e faça uma demonstração gratuita do sistema ideal para o seu negócio.</p>
-  <div class="contato-cards">
-    <a href="https://wa.me/5535999010261?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20sistemas%20DevSystem%20PRIME" target="_blank" class="contato-card">
-      <div class="contato-icon">💬</div>
-      <div class="contato-info">
-        <small>WhatsApp</small>
-        <strong>(35) 99901-0261</strong>
-      </div>
-    </a>
-    <a href="mailto:filipearibeiro87@gmail.com" class="contato-card">
-      <div class="contato-icon">✉️</div>
-      <div class="contato-info">
-        <small>E-mail</small>
-        <strong>filipearibeiro87@gmail.com</strong>
-      </div>
-    </a>
+  <p>Entre em contato agora e agende uma demonstração gratuita do sistema ideal para o seu negócio.</p>
+  <div class="contato-flex">
+    <div class="contato-cards">
+      <a href="https://wa.me/5535999010261?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20sistemas%20DevSystem%20PRIME" target="_blank" class="contato-card">
+        <div class="contato-icon">💬</div>
+        <div class="contato-info">
+          <small>WhatsApp</small>
+          <strong>(35) 99901-0261</strong>
+        </div>
+      </a>
+      <a href="mailto:filipearibeiro87@gmail.com" class="contato-card">
+        <div class="contato-icon">✉️</div>
+        <div class="contato-info">
+          <small>E-mail</small>
+          <strong>filipearibeiro87@gmail.com</strong>
+        </div>
+      </a>
+    </div>
+
+    <!-- LEAD FORM -->
+    <div class="lead-form reveal">
+      <h3>Receber contato</h3>
+      <input type="text" placeholder="Seu nome" id="lead-nome">
+      <input type="tel" placeholder="WhatsApp com DDD" id="lead-tel">
+      <select id="lead-sistema">
+        <option value="" disabled selected>Qual sistema te interessa?</option>
+        <option value="FoodPRIME">FoodPRIME (Pizzaria / Lanchonete)</option>
+        <option value="MecPRIME">MecPRIME (Oficina Mecânica)</option>
+        <option value="Ambos">Tenho interesse nos dois</option>
+      </select>
+      <button onclick="enviarLead()">Quero uma demonstração →</button>
+    </div>
   </div>
 </section>
 
@@ -435,6 +803,71 @@
 <footer>
   <strong>DevSystem PRIME</strong> &nbsp;·&nbsp; Sistemas de Gestão Profissional &nbsp;·&nbsp; Todos os direitos reservados © 2026
 </footer>
+
+<script>
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobileMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+
+  // FAQ accordion
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Sugestão de novo sistema → WhatsApp
+  function enviarSugestao() {
+    const nome = document.getElementById('sug-nome').value.trim();
+    const negocio = document.getElementById('sug-negocio').value.trim();
+    const msg = document.getElementById('sug-msg').value.trim();
+    const tel = document.getElementById('sug-tel').value.trim();
+    if (!nome || !negocio) {
+      alert('Por favor preencha pelo menos seu nome e o tipo de negócio.');
+      return;
+    }
+    let texto = `💡 *Sugestão de novo sistema*\n\nNome: ${nome}\nNegócio: ${negocio}`;
+    if (msg) texto += `\nDetalhes: ${msg}`;
+    if (tel) texto += `\nWhatsApp: ${tel}`;
+    window.open(`https://wa.me/5535999010261?text=${encodeURIComponent(texto)}`, '_blank');
+    document.getElementById('sugestaoForm').style.display = 'none';
+    document.getElementById('sugestaoSuccess').style.display = 'block';
+  }
+
+  // Lead form → WhatsApp
+  function enviarLead() {
+    const nome = document.getElementById('lead-nome').value.trim();
+    const tel = document.getElementById('lead-tel').value.trim();
+    const sistema = document.getElementById('lead-sistema').value;
+    if (!nome || !tel || !sistema) {
+      alert('Por favor preencha todos os campos.');
+      return;
+    }
+    const msg = encodeURIComponent(`Olá! Me chamo ${nome}, meu WhatsApp é ${tel} e tenho interesse no ${sistema}. Gostaria de agendar uma demonstração!`);
+    window.open(`https://wa.me/5535999010261?text=${msg}`, '_blank');
+  }
+</script>
 
 </body>
 </html>
