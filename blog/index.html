@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | Dicas de Gestão para Pizzaria, Lanchonete e Oficina Mecânica | DevSystem PRIME</title>
+  <meta name="description" content="Artigos e dicas práticas de gestão para pizzarias, lanchonetes e oficinas mecânicas. Aprenda a organizar, controlar e crescer o seu negócio.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://devsystemprime.com.br/blog/">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --navy: #1E3A5F; --blue: #2E86DE; --blue-dark: #1a6bbf; --blue-light: #E8F2FB; --green: #27AE60; --orange: #E67E22; --text: #1A202C; --muted: #4A5568; --border: #E2E8F0; --bg: #F7F8FA; --white: #FFFFFF; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-weight: 800; font-size: 1.15rem; color: var(--navy); text-decoration: none; }
+    .nav-logo span { color: var(--blue); }
+    .nav-cta { background: var(--blue); color: #fff; padding: .5rem 1.25rem; border-radius: 8px; font-size: .875rem; font-weight: 600; text-decoration: none; }
+    .blog-hero { padding: 7rem 2rem 3rem; background: linear-gradient(160deg, #fff 55%, var(--blue-light) 100%); text-align: center; }
+    .blog-hero h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; color: var(--navy); letter-spacing: -1px; margin-bottom: .75rem; }
+    .blog-hero p { font-size: 1rem; color: var(--muted); max-width: 480px; margin: 0 auto; line-height: 1.7; }
+    .blog-grid { max-width: 960px; margin: 0 auto; padding: 3rem 2rem 5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .post-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: transform .2s, box-shadow .2s; text-decoration: none; display: flex; flex-direction: column; }
+    .post-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.08); }
+    .post-card-top { padding: 1.5rem 1.5rem 1rem; flex: 1; }
+    .post-tag { display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: .25rem .75rem; border-radius: 99px; margin-bottom: .75rem; }
+    .tag-oficina { background: var(--blue-light); color: var(--blue); }
+    .tag-pizzaria { background: #FEF3E2; color: var(--orange); }
+    .post-card h2 { font-size: 1rem; font-weight: 700; color: var(--navy); line-height: 1.4; margin-bottom: .5rem; }
+    .post-card p { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+    .post-card-bottom { padding: .75rem 1.5rem 1.25rem; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+    .post-meta { font-size: .75rem; color: var(--muted); }
+    .post-link { font-size: .82rem; font-weight: 700; color: var(--blue); }
+    .cta-banner { background: var(--navy); padding: 3rem 2rem; text-align: center; }
+    .cta-banner h2 { color: #fff; font-size: 1.5rem; font-weight: 800; margin-bottom: .5rem; }
+    .cta-banner p { color: rgba(255,255,255,.7); margin-bottom: 1.5rem; }
+    .cta-banner a { display: inline-block; background: var(--blue); color: #fff; padding: .85rem 2rem; border-radius: 10px; font-weight: 700; text-decoration: none; }
+    footer { background: #111827; padding: 1.5rem 2rem; text-align: center; font-size: .8rem; color: rgba(255,255,255,.35); }
+    footer strong { color: rgba(255,255,255,.6); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">Dev<span>System</span> PRIME</a>
+  <a href="https://wa.me/5535999010261" target="_blank" class="nav-cta">💬 WhatsApp</a>
+</nav>
+
+<div class="blog-hero">
+  <h1>Blog DevSystem PRIME</h1>
+  <p>Dicas práticas de gestão para pizzarias, lanchonetes e oficinas mecânicas crescerem com mais controle e menos desperdício.</p>
+</div>
+
+<div class="blog-grid">
+
+  <a href="como-organizar-ordens-de-servico-oficina-mecanica.html" class="post-card">
+    <div class="post-card-top">
+      <span class="post-tag tag-oficina">Oficina Mecânica</span>
+      <h2>Como organizar as ordens de serviço da sua oficina mecânica</h2>
+      <p>Pare de perder dinheiro com serviços esquecidos. Veja como estruturar o fluxo de OS da sua oficina de forma simples e eficiente.</p>
+    </div>
+    <div class="post-card-bottom">
+      <span class="post-meta">6 min de leitura</span>
+      <span class="post-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a href="sistema-pdv-para-lanchonete-vale-a-pena.html" class="post-card">
+    <div class="post-card-top">
+      <span class="post-tag tag-pizzaria">Lanchonete</span>
+      <h2>Sistema PDV para lanchonete: vale a pena investir?</h2>
+      <p>Comparação honesta entre papel, planilha e sistema PDV — com o que cada um resolve e quando faz sentido migrar.</p>
+    </div>
+    <div class="post-card-bottom">
+      <span class="post-meta">7 min de leitura</span>
+      <span class="post-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a href="como-aumentar-faturamento-oficina-mecanica.html" class="post-card">
+    <div class="post-card-top">
+      <span class="post-tag tag-oficina">Oficina Mecânica</span>
+      <h2>Como aumentar o faturamento da sua oficina mecânica</h2>
+      <p>6 estratégias práticas para crescer o faturamento sem precisar de mais clientes — só com melhor gestão do que você já tem.</p>
+    </div>
+    <div class="post-card-bottom">
+      <span class="post-meta">8 min de leitura</span>
+      <span class="post-link">Ler artigo →</span>
+    </div>
+  </a>
+
+  <a href="como-controlar-estoque-pizzaria.html" class="post-card">
+    <div class="post-card-top">
+      <span class="post-tag tag-pizzaria">Pizzaria</span>
+      <h2>Como controlar o estoque da sua pizzaria ou lanchonete</h2>
+      <p>Desperdício e ruptura custam até 12% do faturamento. Veja como controlar o estoque de forma simples e parar de perder dinheiro.</p>
+    </div>
+    <div class="post-card-bottom">
+      <span class="post-meta">7 min de leitura</span>
+      <span class="post-link">Ler artigo →</span>
+    </div>
+  </a>
+
+</div>
+
+<div class="cta-banner">
+  <h2>Quer ver o sistema funcionando?</h2>
+  <p>Demonstração gratuita e sem compromisso. Fale com a gente pelo WhatsApp.</p>
+  <a href="https://wa.me/5535999010261?text=Olá!%20Vi%20o%20blog%20e%20quero%20uma%20demonstração%20gratuita" target="_blank">Agendar demonstração →</a>
+</div>
+
+<footer>
+  <strong>DevSystem PRIME</strong> &nbsp;·&nbsp; Sistema para Pizzaria, Lanchonete e Oficina Mecânica &nbsp;·&nbsp; © 2026
+</footer>
+
+</body>
+</html>

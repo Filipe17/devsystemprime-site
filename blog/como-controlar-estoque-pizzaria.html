@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Como Controlar o Estoque da Sua Pizzaria | DevSystem PRIME</title>
+  <meta name="description" content="Aprenda como controlar o estoque da sua pizzaria ou lanchonete de forma simples e eficiente. Evite desperdício, ruptura e perda de dinheiro com gestão de estoque.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://devsystemprime.com.br/blog/como-controlar-estoque-pizzaria.html">
+  <meta property="og:title" content="Como Controlar o Estoque da Sua Pizzaria">
+  <meta property="og:description" content="Controle de estoque para pizzaria e lanchonete: aprenda a evitar desperdício e ruptura com gestão simples e eficiente.">
+  <meta property="og:type" content="article">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Como Controlar o Estoque da Sua Pizzaria",
+    "description": "Aprenda como controlar o estoque da sua pizzaria ou lanchonete de forma simples e eficiente.",
+    "author": { "@type": "Organization", "name": "DevSystem PRIME" },
+    "publisher": { "@type": "Organization", "name": "DevSystem PRIME", "url": "https://devsystemprime.com.br" },
+    "datePublished": "2026-09-11",
+    "url": "https://devsystemprime.com.br/blog/como-controlar-estoque-pizzaria.html"
+  }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --navy: #1E3A5F; --blue: #2E86DE; --blue-dark: #1a6bbf; --blue-light: #E8F2FB; --green: #27AE60; --orange: #E67E22; --orange-dark: #d35400; --text: #1A202C; --muted: #4A5568; --border: #E2E8F0; --bg: #F7F8FA; --white: #FFFFFF; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-weight: 800; font-size: 1.15rem; color: var(--navy); text-decoration: none; }
+    .nav-logo span { color: var(--blue); }
+    .nav-cta { background: var(--orange); color: #fff; border: none; cursor: pointer; padding: .5rem 1.25rem; border-radius: 8px; font-size: .875rem; font-weight: 600; font-family: inherit; text-decoration: none; }
+    .article-hero { padding: 7rem 2rem 3rem; background: linear-gradient(160deg, #fff 55%, #FEF3E2 100%); text-align: center; }
+    .article-category { display: inline-block; background: #FEF3E2; color: var(--orange); font-size: .75rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: .3rem .9rem; border-radius: 99px; margin-bottom: 1rem; text-decoration: none; }
+    .article-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; color: var(--navy); letter-spacing: -1px; line-height: 1.2; max-width: 700px; margin: 0 auto 1rem; }
+    .article-meta { font-size: .85rem; color: var(--muted); margin-top: .75rem; }
+    .article-body { max-width: 720px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+    .article-body h2 { font-size: 1.45rem; font-weight: 800; color: var(--navy); letter-spacing: -.5px; margin: 2.5rem 0 .75rem; }
+    .article-body h3 { font-size: 1.1rem; font-weight: 700; color: var(--navy); margin: 1.75rem 0 .5rem; }
+    .article-body p { font-size: 1rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+    .article-body ul, .article-body ol { margin: .75rem 0 1rem 1.5rem; display: flex; flex-direction: column; gap: .5rem; }
+    .article-body li { font-size: 1rem; color: var(--muted); line-height: 1.7; }
+    .article-body strong { color: var(--text); font-weight: 700; }
+    .highlight-box { background: #FEF3E2; border-left: 4px solid var(--orange); border-radius: 0 12px 12px 0; padding: 1.25rem 1.5rem; margin: 1.5rem 0; }
+    .highlight-box p { color: #7B341E; margin: 0; font-weight: 500; }
+    .alert-box { background: #FFF5F5; border-left: 4px solid #E53E3E; border-radius: 0 12px 12px 0; padding: 1.25rem 1.5rem; margin: 1.5rem 0; }
+    .alert-box p { color: #742A2A; margin: 0; }
+    .checklist { list-style: none; margin-left: 0 !important; }
+    .checklist li { padding-left: 1.75rem; position: relative; }
+    .checklist li::before { content: '✔'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+    .step-list { list-style: none; margin-left: 0 !important; counter-reset: steps; }
+    .step-list li { counter-increment: steps; padding: 1rem 1rem 1rem 3.5rem; position: relative; border-bottom: 1px solid var(--border); }
+    .step-list li:last-child { border-bottom: none; }
+    .step-list li::before { content: counter(steps); position: absolute; left: 0; top: 1rem; width: 2rem; height: 2rem; background: var(--orange); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: .85rem; }
+    .step-list li strong { display: block; color: var(--navy); font-weight: 700; margin-bottom: .25rem; }
+    .cta-box { background: var(--navy); border-radius: 20px; padding: 2.5rem; text-align: center; margin: 3rem 0; }
+    .cta-box h3 { color: #fff; font-size: 1.3rem; font-weight: 800; margin-bottom: .5rem; }
+    .cta-box p { color: rgba(255,255,255,.7); font-size: .95rem; margin-bottom: 1.5rem; line-height: 1.6; }
+    .cta-box a { display: inline-block; background: var(--orange); color: #fff; padding: .85rem 2rem; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 1rem; }
+    .blog-nav { border-top: 1px solid var(--border); padding: 2rem; text-align: center; background: var(--bg); }
+    .blog-nav a { color: var(--blue); text-decoration: none; font-weight: 600; font-size: .9rem; }
+    footer { background: #111827; padding: 1.5rem 2rem; text-align: center; font-size: .8rem; color: rgba(255,255,255,.35); }
+    footer strong { color: rgba(255,255,255,.6); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">Dev<span>System</span> PRIME</a>
+  <a href="https://wa.me/5535999010261?text=Olá!%20Li%20o%20artigo%20e%20quero%20saber%20mais%20sobre%20o%20FoodPRIME" target="_blank" class="nav-cta">💬 Falar pelo WhatsApp</a>
+</nav>
+
+<div class="article-hero">
+  <a href="../index.html#sistemas" class="article-category">Pizzaria &amp; Lanchonete</a>
+  <h1>Como controlar o estoque da sua pizzaria ou lanchonete</h1>
+  <p class="article-meta">DevSystem PRIME · 11 de setembro de 2026 · 7 min de leitura</p>
+</div>
+
+<article class="article-body">
+
+  <p>Falta de ingrediente no pico do movimento. Mussarela vencida na geladeira. Tomate comprado em excesso e jogado fora no final da semana. Esses problemas têm um nome: falta de controle de estoque — e custam dinheiro todo dia.</p>
+
+  <p>O controle de estoque é uma das partes mais negligenciadas na gestão de pizzarias e lanchonetes, justamente porque parece complicado. Mas com o processo certo, é simples e traz resultado rápido.</p>
+
+  <div class="alert-box">
+    <p>🗑️ <strong>O desperdício de alimentos representa, em média, 8% a 12% do faturamento bruto de restaurantes e lanchonetes.</strong> Em uma operação que fatura R$ 20.000 por mês, isso é até R$ 2.400 jogados fora todo mês.</p>
+  </div>
+
+  <h2>Os dois inimigos do estoque: desperdício e ruptura</h2>
+
+  <p>O estoque mal gerenciado gera dois problemas opostos, mas igualmente prejudiciais:</p>
+
+  <h3>Desperdício (estoque em excesso)</h3>
+  <p>Comprar mais do que vende resulta em produto vencendo, qualidade caindo e dinheiro parado em ingrediente que não vai virar venda. É dinheiro jogado fora literalmente.</p>
+
+  <h3>Ruptura (estoque zerado)</h3>
+  <p>Faltar ingrediente no meio do serviço é ainda pior: você perde a venda, o cliente fica insatisfeito e vai para o concorrente. Em dias de pico — sexta à noite, fim de semana — a ruptura pode custar muito.</p>
+
+  <h2>Como controlar o estoque da pizzaria passo a passo</h2>
+
+  <ol class="step-list">
+    <li>
+      <strong>Faça um inventário completo</strong>
+      Liste tudo que você usa: ingredientes, embalagens, descartáveis, bebidas. Anote a quantidade atual e a unidade de medida (kg, unidade, litro).
+    </li>
+    <li>
+      <strong>Defina o estoque mínimo de cada item</strong>
+      Para cada produto, defina a quantidade mínima que você precisa ter antes de fazer um novo pedido. Esse é o seu "ponto de reposição".
+    </li>
+    <li>
+      <strong>Registre todas as entradas de mercadoria</strong>
+      Cada compra que chega precisa ser lançada no sistema: o que veio, a quantidade, o fornecedor e o valor pago. Isso mantém o estoque atualizado automaticamente.
+    </li>
+    <li>
+      <strong>Baixe o estoque conforme a produção</strong>
+      Quando um pedido é feito, o sistema desconta automaticamente os ingredientes do estoque. Isso elimina a necessidade de contar manualmente todo dia.
+    </li>
+    <li>
+      <strong>Faça inventário semanal nos itens críticos</strong>
+      Uma vez por semana, confira fisicamente os itens que têm maior giro ou maior risco de vencimento. Isso pega qualquer divergência antes de virar problema.
+    </li>
+    <li>
+      <strong>Analise o histórico de compras</strong>
+      Com o tempo, você vai ver padrões: quanto de mussarela usa por semana, qual o consumo de massa nas sextas. Esses dados te ajudam a comprar com precisão.
+    </li>
+  </ol>
+
+  <h2>O que monitorar no estoque de uma pizzaria</h2>
+
+  <ul class="checklist">
+    <li>Ingredientes perecíveis com data de validade</li>
+    <li>Matérias-primas de alto custo (mussarela, presunto, camarão)</li>
+    <li>Embalagens de delivery (caixas, sacolas, descartáveis)</li>
+    <li>Bebidas e sobremesas</li>
+    <li>Insumos de limpeza e higiene</li>
+    <li>Produtos com alto giro (farinha, molho de tomate)</li>
+  </ul>
+
+  <div class="highlight-box">
+    <p>💡 <strong>Dica prática:</strong> Organize o estoque no método PEPS (Primeiro que Entra, Primeiro que Sai). Os produtos mais antigos ficam na frente para serem usados primeiro. Isso reduz drasticamente o vencimento de mercadoria.</p>
+  </div>
+
+  <h2>Como um sistema de gestão facilita o controle de estoque</h2>
+
+  <p>Controlar o estoque no papel ou planilha funciona por um tempo, mas tem limitações sérias: você precisa atualizar manualmente, é difícil de compartilhar com a equipe e não avisa quando o produto está acabando.</p>
+
+  <p>Um sistema de gestão integrado resolve isso automaticamente:</p>
+
+  <ul>
+    <li><strong>Baixa automática do estoque</strong> a cada pedido registrado</li>
+    <li><strong>Alerta quando o produto atinge o estoque mínimo</strong></li>
+    <li><strong>Relatório de consumo</strong> para comprar com mais precisão</li>
+    <li><strong>Histórico de compras por fornecedor</strong></li>
+    <li><strong>Cadastro de receitas</strong> com os ingredientes de cada produto</li>
+  </ul>
+
+  <h2>Quanto o controle de estoque economiza por mês?</h2>
+
+  <p>Depende do tamanho da operação, mas em média as pizzarias e lanchonetes que adotam um controle de estoque formal reduzem o desperdício em <strong>30% a 50%</strong> nos primeiros três meses.</p>
+
+  <p>Em uma operação que fatura R$ 15.000 por mês e perde 10% em desperdício (R$ 1.500), reduzir esse número pela metade significa <strong>R$ 750 por mês no bolso</strong> — sem vender mais nada.</p>
+
+  <div class="cta-box">
+    <h3>FoodPRIME: controle de estoque integrado para pizzaria e lanchonete</h3>
+    <p>Cadastre seus produtos, registre entradas de mercadoria e deixe o sistema baixar o estoque automaticamente a cada pedido. Simples, rápido e 100% web.</p>
+    <a href="https://wa.me/5535999010261?text=Olá!%20Li%20o%20artigo%20sobre%20estoque%20e%20quero%20conhecer%20o%20FoodPRIME" target="_blank">Ver demonstração gratuita →</a>
+  </div>
+
+  <h2>Conclusão</h2>
+
+  <p>Controlar o estoque da pizzaria ou lanchonete não é burocracia — é uma das formas mais diretas de aumentar a lucratividade sem precisar vender mais. Menos desperdício significa mais dinheiro no caixa ao final do mês.</p>
+
+  <p>O processo começa simples: faça o inventário, defina os mínimos e registre as entradas. Com um sistema de gestão, isso fica automático e você tem controle em tempo real de tudo que tem no seu negócio.</p>
+
+</article>
+
+<div class="blog-nav">
+  <a href="../index.html">← Voltar para o site</a>
+  &nbsp;&nbsp;·&nbsp;&nbsp;
+  <a href="https://wa.me/5535999010261" target="_blank">💬 Falar pelo WhatsApp</a>
+</div>
+
+<footer>
+  <strong>DevSystem PRIME</strong> &nbsp;·&nbsp; Sistema para Pizzaria, Lanchonete e Oficina Mecânica &nbsp;·&nbsp; © 2026
+</footer>
+
+</body>
+</html>
