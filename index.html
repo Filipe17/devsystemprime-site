@@ -372,7 +372,7 @@
     .precos { padding: 5rem 2rem; background: var(--white); }
     .precos-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem; max-width: 800px; margin: 0 auto;
+      gap: 2rem; max-width: 1150px; margin: 0 auto;
     }
     .preco-card {
       border-radius: 20px; border: 2px solid var(--border);
@@ -410,6 +410,10 @@
     .preco-cta.blue:hover { background: var(--blue-dark); transform: translateY(-1px); }
     .preco-cta.outline { border: 2px solid var(--border); color: var(--navy); }
     .preco-cta.outline:hover { border-color: var(--blue); color: var(--blue); }
+    .preco-card.teste { border-color: #9AE6B4; background: #F7FFF9; }
+    .preco-card.teste .preco-badge { background: #38A169; }
+    .preco-cta.green { background: #38A169; color: #fff; }
+    .preco-cta.green:hover { background: #2F855A; transform: translateY(-1px); }
     .precos-nota { text-align: center; font-size: .85rem; color: var(--muted); margin-top: 2rem; }
 
     /* ── FAQ ── */
@@ -911,6 +915,29 @@
   </div>
 
   <div class="precos-grid">
+    <!-- Teste grátis -->
+    <div class="preco-card teste reveal">
+      <div class="preco-badge">Teste grátis</div>
+      <div class="preco-icon">🎁</div>
+      <div>
+        <div class="preco-nome">Teste Grátis</div>
+        <div class="preco-seg">MecPRIME ou FoodPRIME</div>
+      </div>
+      <div class="preco-valor">
+        <span class="cifrao">R$</span>
+        <span class="valor">0</span>
+        <span class="periodo">/1º mês</span>
+      </div>
+      <div class="preco-obs">1 mês grátis para conhecer o sistema na prática</div>
+      <ul class="preco-lista">
+        <li>Acesso completo ao sistema escolhido</li>
+        <li>Usuários ilimitados</li>
+        <li>Ajuda na configuração inicial</li>
+        <li>Suporte direto via WhatsApp</li>
+      </ul>
+      <a href="https://wa.me/5535999010261?text=Olá!%20Quero%20testar%20o%20sistema%20grátis%20por%201%20mês" target="_blank" class="preco-cta green">Quero testar grátis →</a>
+    </div>
+
     <!-- MecPRIME -->
     <div class="preco-card reveal">
       <div class="preco-icon">🔧</div>
