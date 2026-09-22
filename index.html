@@ -905,9 +905,9 @@
   <h2 class="section-title">Quanto custa o sistema para pizzaria e oficina mecânica?</h2>
   <p class="section-sub">Preço único e transparente. Sem taxa de implantação, sem surpresas na fatura.</p>
 
-  <!-- Toggle mensal / trimestral -->
+  <!-- Toggle anual / trimestral -->
   <div style="display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:2rem;">
-    <span id="label-mensal" style="font-size:.95rem;font-weight:700;color:var(--navy);">Mensal</span>
+    <span id="label-mensal" style="font-size:.95rem;font-weight:700;color:var(--navy);">Anual</span>
     <div id="toggle-plano" onclick="togglePlano()" style="width:52px;height:28px;background:var(--blue);border-radius:99px;cursor:pointer;position:relative;transition:background .2s;">
       <div id="toggle-bolinha" style="width:22px;height:22px;background:#fff;border-radius:50%;position:absolute;top:3px;left:3px;transition:left .2s;"></div>
     </div>
@@ -940,6 +940,7 @@
 
     <!-- MecPRIME -->
     <div class="preco-card destaque reveal">
+      <div class="preco-badge badge-anual">Mais completo</div>
       <div class="preco-icon">🔧</div>
       <div>
         <div class="preco-nome">MecPRIME</div>
@@ -958,11 +959,12 @@
         <li>NF-e e relatórios</li>
         <li>Suporte direto via WhatsApp</li>
       </ul>
-      <a id="cta-mec" href="https://wa.me/5535999010261?text=Olá!%20Tenho%20interesse%20no%20MecPRIME%20mensal" target="_blank" class="preco-cta blue">Falar sobre o MecPRIME →</a>
+      <a id="cta-mec" href="https://wa.me/5535999010261?text=Olá!%20Tenho%20interesse%20no%20MecPRIME%20plano%20anual" target="_blank" class="preco-cta blue">Falar sobre o MecPRIME →</a>
     </div>
 
     <!-- FoodPRIME -->
     <div class="preco-card destaque reveal">
+      <div class="preco-badge badge-anual">Mais completo</div>
       <div class="preco-icon">🍕</div>
       <div>
         <div class="preco-nome">FoodPRIME</div>
@@ -981,7 +983,7 @@
         <li>Financeiro, DRE e estoque</li>
         <li>Suporte direto via WhatsApp</li>
       </ul>
-      <a id="cta-food" href="https://wa.me/5535999010261?text=Olá!%20Tenho%20interesse%20no%20FoodPRIME%20mensal" target="_blank" class="preco-cta blue">Falar sobre o FoodPRIME →</a>
+      <a id="cta-food" href="https://wa.me/5535999010261?text=Olá!%20Tenho%20interesse%20no%20FoodPRIME%20plano%20anual" target="_blank" class="preco-cta blue">Falar sobre o FoodPRIME →</a>
     </div>
   </div>
   <div style="text-align:center;margin-top:1rem;"><div style="display:inline-flex;align-items:center;gap:.5rem;background:#F0FFF4;border:1px solid #9AE6B4;border-radius:99px;padding:.5rem 1.25rem;"><span style="font-size:1rem;">🔒</span><div style="text-align:left;"><span style="font-size:.85rem;font-weight:700;color:#276749;">Preço garantido por 12 meses</span><span style="font-size:.78rem;color:#4A5568;display:block;">Valor fixo durante os 12 meses do contrato. Após esse período, o valor será renegociado.</span></div></div></div>
@@ -998,6 +1000,7 @@
         bolinha.style.left = '27px';
         lMensal.style.color = 'var(--muted)'; lMensal.style.fontWeight = '600';
         lTrim.style.color = 'var(--navy)'; lTrim.style.fontWeight = '700';
+        document.querySelectorAll('.badge-anual').forEach(function(b){ b.style.display = 'none'; });
         document.getElementById('valor-mec').textContent = '100';
         document.getElementById('valor-food').textContent = '100';
         document.getElementById('obs-mec').textContent = 'Pago mensalmente · Fidelidade de 3 meses';
@@ -1008,12 +1011,13 @@
         bolinha.style.left = '3px';
         lMensal.style.color = 'var(--navy)'; lMensal.style.fontWeight = '700';
         lTrim.style.color = 'var(--muted)'; lTrim.style.fontWeight = '600';
+        document.querySelectorAll('.badge-anual').forEach(function(b){ b.style.display = ''; });
         document.getElementById('valor-mec').textContent = '150';
         document.getElementById('valor-food').textContent = '150';
         document.getElementById('obs-mec').textContent = 'Pago mensalmente · Fidelidade de 12 meses';
         document.getElementById('obs-food').textContent = 'Pago mensalmente · Fidelidade de 12 meses';
-        document.getElementById('cta-mec').href = 'https://wa.me/5535999010261?text=Olá!%20Tenho%20interesse%20no%20MecPRIME%20mensal';
-        document.getElementById('cta-food').href = 'https://wa.me/5535999010261?text=Olá!%20Tenho%20interesse%20no%20FoodPRIME%20mensal';
+        document.getElementById('cta-mec').href = 'https://wa.me/5535999010261?text=Olá!%20Tenho%20interesse%20no%20MecPRIME%20plano%20anual';
+        document.getElementById('cta-food').href = 'https://wa.me/5535999010261?text=Olá!%20Tenho%20interesse%20no%20FoodPRIME%20plano%20anual';
       }
     }
   </script>
