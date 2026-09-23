@@ -411,6 +411,9 @@
     .preco-cta.outline { border: 2px solid var(--border); color: var(--navy); }
     .preco-cta.outline:hover { border-color: var(--blue); color: var(--blue); }
     .preco-card.teste { border-color: #9AE6B4; background: #F7FFF9; }
+    .preco-lista li.nao { color: #A0AEC0; }
+    .preco-lista li.nao::before { content: '✖'; color: #CBD5E0; }
+    .preco-lista-titulo { font-size: .72rem; font-weight: 800; letter-spacing: .5px; text-transform: uppercase; color: var(--muted); margin-top: .25rem; }
     .preco-card.teste .preco-badge { background: #38A169; }
     .preco-cta.green { background: #38A169; color: #fff; }
     .preco-cta.green:hover { background: #2F855A; transform: translateY(-1px); }
@@ -930,10 +933,19 @@
       </div>
       <div class="preco-obs">1 mês grátis no MecPRIME ou FoodPRIME</div>
       <ul class="preco-lista">
-        <li>Acesso completo ao sistema escolhido</li>
-        <li>Usuários ilimitados</li>
+        <li>Pedidos, cardápio, cozinha, delivery e mesas</li>
+        <li>1 usuário admin e 1 caixa</li>
+        <li>Até 3 clientes cadastrados no delivery e 3 na mesa</li>
+        <li>Pedidos pelo WhatsApp sem limite</li>
         <li>Ajuda na configuração inicial</li>
         <li>Suporte direto via WhatsApp</li>
+      </ul>
+      <div class="preco-lista-titulo">Liberado após contratar</div>
+      <ul class="preco-lista">
+        <li class="nao">NFC-e (nota fiscal)</li>
+        <li class="nao">Pagamento online (PIX e cartão pelo site)</li>
+        <li class="nao">Financeiro e relatórios</li>
+        <li class="nao">Mais de um caixa</li>
       </ul>
       <a href="https://wa.me/5535999010261?text=Ol%C3%A1%21%20Quero%20testar%20o%20sistema%20gr%C3%A1tis%20por%201%20m%C3%AAs.%0A%0ASistema%20%28MecPRIME%20ou%20FoodPRIME%29%3A%20%0ANome%20completo%3A%20%0ANome%20da%20empresa%3A%20%0ARaz%C3%A3o%20social%3A%20%0ACNPJ%3A%20%0ATelefone%3A%20%0AE-mail%3A%20" target="_blank" class="preco-cta green">Quero testar grátis →</a>
     </div>
